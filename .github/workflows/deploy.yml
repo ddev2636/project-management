@@ -1,0 +1,42 @@
+name: Deploy to EC2
+
+on:
+  push:
+    branches:
+      - main # Change this to your main branch
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up SSH
+        uses: appleboy/ssh-action@v0.1.5
+        with:
+          host: ${{ secrets.EC2_HOST }} # Your EC2 instance public IP or hostname
+          username: ${{ secrets.EC2_USERNAME }} # Change if your user is different
+          key: ${{ secrets.EC2_PRIVATE_KEY }} # Your SSH private key
+          script: |
+            # Switch to superuser
+            sudo su -  
+
+            #check
+            ls -a           
+
+            # Navigate to your application directory
+            cd inventory-management         
+
+            # Pull the latest changes from the repository
+            git pull origin main
+
+            # Navigate to server directory
+            cd server
+
+            # Install dependencies
+            npm install           
+
+            # Restart the application using pm2
+            pm2 restart ecosystem.config.js || pm2 start ecosystem.config.js  # Restart if running, else start
