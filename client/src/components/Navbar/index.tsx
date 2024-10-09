@@ -15,6 +15,7 @@ const Navbar = () => {
   const isDarkMode = useAppSelector((state) => state.global.isDarkMode);
 
   const { data: currentUser } = useGetAuthUserQuery({});
+  console.log(currentUser);
   const handleSignOut = async () => {
     try {
       await signOut();
