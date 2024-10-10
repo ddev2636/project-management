@@ -174,6 +174,14 @@ A full-stack project management system that allows users to track products, mana
   pm2 monit
   ```
 
+### Useful nano Commands:
+  - Monitor processes:
+  ```bash
+  nano .env
+  Ctrl+O + Enter ->save
+  Ctrl+X -> exit
+  ```
+
 ## RDS PostgreSQL 
 
 To connect to your RDS PostgreSQL database, you will need to set up a connection string in your environment variables. The connection string format is as follows:
