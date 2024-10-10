@@ -205,7 +205,7 @@ To allow public read access to the objects in your S3 bucket, you can use the fo
 
 ## Lambda function
  ```plaintext
-  import https from "node:https";
+ import https from "node:https";
 
 export const handler = async (event) => {
   const postData = JSON.stringify({
