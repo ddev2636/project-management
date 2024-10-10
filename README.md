@@ -1,7 +1,7 @@
 # Project Management System
 
 ## Overview
-A full-stack project management system that allows users to track products, manage stock, and generate reports. The project consists of a client built with [Next.js](https://nextjs.org/) and a server using [Node.js](https://nodejs.org/) and [Prisma](https://www.prisma.io/).
+A full-stack project management system that allows users to track products, manage projects, and generate reports. The project consists of a client built with [Next.js](https://nextjs.org/) and a server using [Node.js](https://nodejs.org/) and [Prisma](https://www.prisma.io/).
 
 
 ## Technologies Used
@@ -57,6 +57,8 @@ A full-stack project management system that allows users to track products, mana
     - For client settings, configure the `.env.local` file:
         ```plaintext
         NEXT_PUBLIC_API_BASE_URL=your-api-base-url
+        NEXT_PUBLIC_COGNITO_USER_POOL_ID=your-cognito-user-pool-id
+        NEXT_PUBLIC_COGNITO_USER_POOL_CLIENT_ID= your-cognito-user-pool-client-id
         ```
 
 5. **Run the project**:
@@ -205,7 +207,7 @@ To allow public read access to the objects in your S3 bucket, you can use the fo
 
 ## Lambda function
  ```plaintext
-  import https from "node:https";
+import https from "node:https";
 
 export const handler = async (event) => {
   const postData = JSON.stringify({
